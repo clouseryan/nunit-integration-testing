@@ -18,4 +18,10 @@
     <ProjectReference Include="..\Testing.Pokemon.Services\Testing.Pokemon.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestData\pokedex.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
