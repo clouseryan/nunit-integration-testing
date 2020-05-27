@@ -4,7 +4,7 @@ using System.Text;
 using Testing.Pokemon.Data.Entities;
 using Entities = Testing.Pokemon.Data.Entities;
 
-namespace Testing.Pokemon.Services.Tests
+namespace Testing.Pokemon.Services.Tests.Fixtures
 {
     /// <summary>
     /// Tools used to build entities used during integration testing

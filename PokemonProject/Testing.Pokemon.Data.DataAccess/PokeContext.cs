@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 using Entities = Testing.Pokemon.Data.Entities;
 
 namespace Testing.Pokemon.Data.DataAccess
@@ -24,9 +26,14 @@ namespace Testing.Pokemon.Data.DataAccess
             {
                 options.HasKey(p => p.Id);
                 options.HasOne(p => p.BaseStat);
-                options.HasOne(p => p.PokemonName);
+                options.HasOne(p => p.Name);
                 options.ToTable("Pokemon", "POK");
                 options.Property(x => x.Id).HasColumnName("Number");
+                options.Property(x => x.Types)
+                    .HasConversion(
+                        v => JsonConvert.SerializeObject(v),
+                        v => JsonConvert.DeserializeObject<List<string>>(v)
+                    );
             });
 
             builder.Entity<Entities.PokemonName>(options =>

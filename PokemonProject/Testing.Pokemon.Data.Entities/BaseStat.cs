@@ -22,5 +22,15 @@ namespace Testing.Pokemon.Data.Entities
 
         [ForeignKey("PokemonId")]
         public virtual Pokemon Pokemon { get; set; }
+
+        public void Update(BaseStat baseStat)
+        {
+            this.HitPoints = baseStat.HitPoints;
+            this.Attack = baseStat.Attack;
+            this.Defense = baseStat.Defense;
+            this.SpAttack = baseStat.SpAttack;
+            this.SpDefense = baseStat.SpDefense;
+            this.Speed = baseStat.Speed;
+        }
     }
 }

@@ -18,5 +18,12 @@ namespace Testing.Pokemon.Data.Entities
         public string Chinese { get; set; }
         [ForeignKey("PokemonId")]
         public Pokemon Pokemon { get; set; }
+
+        public void UpdatE(PokemonName name)
+        {
+            this.English = name.English;
+            this.Japanese = name.Japanese;
+            this.Chinese = name.Chinese;
+        }
     }
 }

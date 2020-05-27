@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using Testing.Pokemon.Data.DataAccess;
 
-namespace Testing.Pokemon.Services.Tests
+namespace Testing.Pokemon.Services.Tests.Fixtures
 {
     [TestFixture]
     public class PokedexFixture
@@ -23,7 +23,7 @@ namespace Testing.Pokemon.Services.Tests
         public void Init()
         {
             var builder = new DbContextOptionsBuilder<PokeContext>()
-                .UseSqlServer("Server=localhost;Initial Catalog=VTT_Test;MultipleActiveResultSets=true;User ID=SA;Password=Test123!;");
+                .UseSqlServer("Server=localhost;Initial Catalog=TestMcTesty;MultipleActiveResultSets=true;User ID=SA;Password=Test123!;");
 
             PokeContext = new PokeContext(builder.Options);
             PokeContext.Database.EnsureCreated();
