@@ -14,9 +14,9 @@ namespace Testing.Pokemon.Data.Entities
         public int HitPoints { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
-        [JsonPropertyName("Sp. Attack")]
+        [JsonPropertyName("Sp_Attack")]
         public int SpAttack { get; set; }
-        [JsonPropertyName("Sp. Defense")]
+        [JsonPropertyName("Sp_Defense")]
         public int SpDefense { get; set; }
         public int Speed { get; set; }
 

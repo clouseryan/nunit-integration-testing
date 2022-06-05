@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Web.API", "Pokemon.Web.API\Pokemon.Web.API.csproj", "{34D70677-E96B-42EF-AAB2-A9D5FCCB8666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Data.Entities", "Pokemon.Data.Entities\Pokemon.Data.Entities.csproj", "{C459C016-E0B8-496E-A2FC-CABC188AD474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Data.DataAccess", "Pokemon.Data.DataAccess\Pokemon.Data.DataAccess.csproj", "{10B3103B-F507-4872-96C7-A21518FC601C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34D70677-E96B-42EF-AAB2-A9D5FCCB8666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D70677-E96B-42EF-AAB2-A9D5FCCB8666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D70677-E96B-42EF-AAB2-A9D5FCCB8666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D70677-E96B-42EF-AAB2-A9D5FCCB8666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C459C016-E0B8-496E-A2FC-CABC188AD474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C459C016-E0B8-496E-A2FC-CABC188AD474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C459C016-E0B8-496E-A2FC-CABC188AD474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C459C016-E0B8-496E-A2FC-CABC188AD474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B3103B-F507-4872-96C7-A21518FC601C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B3103B-F507-4872-96C7-A21518FC601C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B3103B-F507-4872-96C7-A21518FC601C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B3103B-F507-4872-96C7-A21518FC601C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
