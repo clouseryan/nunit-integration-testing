@@ -1,22 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Pokemon.Data.Entities;
 
 public class BaseStat
 {
+    [Key]
     public int PokemonId { get; set; }
-    [JsonPropertyName("HP")]
     public int HitPoints { get; set; }
     public int Attack { get; set; }
     public int Defense { get; set; }
-    [JsonPropertyName("Sp_Attack")]
     public int SpAttack { get; set; }
-    [JsonPropertyName("Sp_Defense")]
     public int SpDefense { get; set; }
     public int Speed { get; set; }
-
-    [ForeignKey("PokemonId")]
+    
     public virtual Pokemon Pokemon { get; set; }
 
     public void Update(BaseStat baseStat)

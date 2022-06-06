@@ -4,7 +4,6 @@ namespace Pokemon.Data.Entities;
 
 public class Pokemon
 {
-    [JsonPropertyName("id")]
     public int Id { get; set; }
     [JsonPropertyName("name")]
     public virtual PokemonName Name { get; set; }
