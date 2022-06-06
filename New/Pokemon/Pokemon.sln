@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Data.Models", "Poke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Data.Mapping", "Pokemon.Data.Mapping\Pokemon.Data.Mapping.csproj", "{49911591-B656-40D8-9EDA-800070C380C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Web.API.Tests", "Pokemon.Web.API.Tests\Pokemon.Web.API.Tests.csproj", "{8E95B667-CF90-46B0-8C23-36B1DCE787A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{49911591-B656-40D8-9EDA-800070C380C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49911591-B656-40D8-9EDA-800070C380C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49911591-B656-40D8-9EDA-800070C380C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E95B667-CF90-46B0-8C23-36B1DCE787A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E95B667-CF90-46B0-8C23-36B1DCE787A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E95B667-CF90-46B0-8C23-36B1DCE787A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E95B667-CF90-46B0-8C23-36B1DCE787A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

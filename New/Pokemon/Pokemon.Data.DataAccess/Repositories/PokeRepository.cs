@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pokemon = Pokemon.Data.Entities.Pokemon;
 
 namespace Pokemon.Data.DataAccess.Repositories;
 
@@ -26,6 +25,7 @@ public class PokeRepository
         Entities.Pokemon existingPokemon = null;
         try
         {
+            // will throw an exception if it does not exist
             existingPokemon = await GetById(upatedPokemon.Id);
         }
         catch (Exception e)
@@ -43,5 +43,21 @@ public class PokeRepository
         await _context.SaveChangesAsync();
         
         return existingPokemon;
+    }
+
+    public async Task Delete(int id)
+    {
+        Entities.Pokemon existingPokemon = null;
+
+        try
+        {
+            existingPokemon = await GetById(id);
+            _context.Pokemon.Remove(existingPokemon);
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            // do nothing on exception, it is already removed from the database
+        }
     }
 }
