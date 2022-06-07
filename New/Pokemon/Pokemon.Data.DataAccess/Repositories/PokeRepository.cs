@@ -22,12 +22,10 @@ public class PokeRepository
                 .Include(p => p.BaseStat)
                 .SingleAsync(cancellationToken: cancellationToken);
         }
-        catch (ArgumentNullException e)
-        {
-            throw new ResourceNotFoundException($"No resource found for id :: {id}", e, id.ToString(), "Pokemon");
-        }
         catch (Exception e)
         {
+            if (e is ArgumentNullException || e is InvalidOperationException)
+                throw new ResourceNotFoundException($"No resource found for id :: {id}", e, id.ToString(), "Pokemon");    
             Console.WriteLine(e);
             throw;
         }
@@ -35,7 +33,7 @@ public class PokeRepository
 
     public async Task<Entities.Pokemon> Upsert(Entities.Pokemon updatedPokemon, CancellationToken cancellationToken)
     {
-        Entities.Pokemon existingPokemon = null;
+        Entities.Pokemon? existingPokemon = null;
         try
         {
             // will throw an exception if it does not exist
@@ -48,14 +46,15 @@ public class PokeRepository
 
         if (existingPokemon is null)
         {
-            existingPokemon = new Entities.Pokemon();
-            await _context.Pokemon.AddAsync(existingPokemon, cancellationToken);
+            await _context.Pokemon.AddAsync(updatedPokemon, cancellationToken);
+        }
+        else
+        {
+            existingPokemon.Update(updatedPokemon);
         }
         
-        existingPokemon.Update(updatedPokemon);
         await _context.SaveChangesAsync(cancellationToken);
-        
-        return existingPokemon;
+        return existingPokemon ?? updatedPokemon;
     }
 
     public async Task Delete(int id, CancellationToken cancellationToken)

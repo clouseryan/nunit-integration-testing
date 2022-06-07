@@ -8,16 +8,21 @@ namespace Pokemon.Web.API.Tests.Fixture;
 [TestFixture]
 public class IntegrationTestFixture
 {
-    HttpClient Client;
+    internal HttpClient Client;
+    private WebApplicationFactory<Program> Application;
+    private PokeContext Context;
 
     [OneTimeSetUp]
     public async Task Init()
     {
-        var application = new WebApplicationFactory<Program>();
+        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "integrationTesting");
+        Application = new WebApplicationFactory<Program>();
 
-        var context = application.Services.GetRequiredService<PokeContext>();
-        await context.Pokemon.AddAsync(EntityTools.BuildPokemon());
-        Client = application.CreateClient();
+        Context = Application.Services.GetRequiredService<PokeContext>();
+        await Context.Database.EnsureCreatedAsync();
+        await Context.Pokemon.AddAsync(EntityTools.BuildPokemon());
+        await Context.SaveChangesAsync();
+        Client = Application.CreateClient();
     }
 
     [SetUp]
@@ -35,6 +40,9 @@ public class IntegrationTestFixture
     [OneTimeTearDown]
     public async Task Destroy()
     {
-        
+        await Context?.Database?.EnsureDeletedAsync();
+        Context?.Dispose();
+        Client?.Dispose();
+        Application?.Dispose();
     }
 }

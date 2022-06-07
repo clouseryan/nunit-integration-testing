@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Pokemon.Data.DataAccess;
 using Pokemon.Data.DataAccess.Repositories;
+using Pokemon.Data.Mapping;
 using Pokemon.Services.Core;
 using Pokemon.Web.API;
 using Pokemon.Web.API.Middleware;
@@ -17,10 +18,12 @@ builder.WebHost.ConfigureAppConfiguration((hostingContext, config) =>
 });
 
 // Add services to the container.
-builder.Services.AddDbContext<PokeContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Pokemon").AddPortToConnectionString());
-});
+builder.Services.AddAutoMapper(typeof(PokemonProfile));
+builder.Services
+    .AddDbContext<PokeContext>(
+        (options, context) => context.UseSqlServer(
+            builder.Configuration.GetConnectionString("Pokemon").AddPortToConnectionString())
+);
 builder.Services.AddScoped<PokeRepository>();
 builder.Services.AddScoped<PokemonService>();
 

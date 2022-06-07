@@ -25,6 +25,7 @@ public class PokeContext : DbContext
         builder.Entity<Entities.Pokemon>(options =>
         {
             options.HasKey(p => p.Id);
+            options.Property(p => p.Id).ValueGeneratedNever();
             options.HasOne(p => p.BaseStat);
             options.HasOne(p => p.Name);
             options.ToTable("Pokemon", "POK");
@@ -39,12 +40,14 @@ public class PokeContext : DbContext
         builder.Entity<Entities.PokemonName>(options =>
         {
             options.HasKey(p => p.PokemonId);
+            options.Property(p => p.PokemonId).ValueGeneratedNever();
             options.ToTable("PokemonNames", "POK");
         });
 
         builder.Entity<Entities.BaseStat>(options =>
         {
             options.HasKey(p => p.PokemonId);
+            options.Property(p => p.PokemonId).ValueGeneratedNever();
             options.ToTable("BaseStats", "STT");
             options.Property(x => x.SpAttack).HasColumnName("SpecialAttack");
             options.Property(x => x.SpDefense).HasColumnName("SpecialDefense");
