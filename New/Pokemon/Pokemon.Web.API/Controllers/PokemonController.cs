@@ -13,9 +13,17 @@ public class PokemonController : Controller
         _pokemonService = pokemonService ?? throw new ArgumentNullException(nameof(pokemonService));
     }
     
-    [Route("{id}")]
-    public async Task<IActionResult> Get([FromRoute]int id)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get([FromRoute]int id, CancellationToken cancellationToken)
     {
-        return Ok(await _pokemonService.GetPokemonById(id));
+        return Ok(await _pokemonService.GetPokemonById(id, cancellationToken));
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] Data.Models.Pokemon newPokemon, CancellationToken cancellationToken)
+    {
+        return Ok(await _pokemonService.CreateOrUpdatePokemon(newPokemon, cancellationToken));
+    }
+    
+    
 }

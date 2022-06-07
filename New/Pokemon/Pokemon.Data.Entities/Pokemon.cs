@@ -5,11 +5,8 @@ namespace Pokemon.Data.Entities;
 public class Pokemon
 {
     public int Id { get; set; }
-    [JsonPropertyName("name")]
     public virtual PokemonName Name { get; set; }
-    [JsonPropertyName("type")]
     public List<string> Types { get; set; }
-    [JsonPropertyName("base")]
     public virtual BaseStat BaseStat { get; set; }
 
     public void Update(Pokemon pokemon)
