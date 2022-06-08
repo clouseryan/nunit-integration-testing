@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Pokemon.Data.DataAccess;
+using Pokemon.Services.Core;
 using Pokemon.Web.API.Tests.Tools;
 
 namespace Pokemon.Web.API.Tests.Fixture;
@@ -11,12 +13,13 @@ public class IntegrationTestFixture
     internal HttpClient Client;
     private WebApplicationFactory<Program> Application;
     private PokeContext Context;
+    internal PokemonService service;
 
     [OneTimeSetUp]
     public async Task Init()
     {
-        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "integrationTesting");
-        Application = new WebApplicationFactory<Program>();
+        Application = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(builder => builder.UseEnvironment("integrationTesting"));
 
         Context = Application.Services.GetRequiredService<PokeContext>();
         await Context.Database.EnsureCreatedAsync();
