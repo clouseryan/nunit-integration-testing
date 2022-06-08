@@ -5,6 +5,7 @@ using Pokemon.Data.DataAccess.Repositories;
 using Pokemon.Data.Mapping;
 using Pokemon.Services.Core;
 using Pokemon.Web.API;
+using Pokemon.Web.API.Filters;
 using Pokemon.Web.API.Middleware;
 
 [assembly:InternalsVisibleTo("Pokemon.Web.API.Tests")]
@@ -18,6 +19,7 @@ builder.WebHost.ConfigureAppConfiguration((hostingContext, config) =>
 });
 
 // Add services to the container.
+builder.Services.AddScoped<PokemonUpdateFilter>();
 builder.Services.AddAutoMapper(typeof(PokemonProfile));
 builder.Services
     .AddDbContext<PokeContext>(
